@@ -5,7 +5,7 @@ import type { Constructor } from '@/utils';
 
 export type HydratableStores = Record<
   keyof Stores,
-  Constructor<Hydratable<InstanceType<Constructor>>>
+  Constructor<Partial<Hydratable<InstanceType<Constructor>>>>
 >;
 
 export interface Hydratable<TClass extends InstanceType<Constructor>> {
