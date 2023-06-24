@@ -25,7 +25,7 @@ export interface StoredServerPropsGetter<TStores extends Stores> {
 }
 
 export type ServerPropsGetter<
-  /*
+  /**
    * `any` is used to prevent subtype errors
    * when passing generic arguments in `createServerPropsGetter`
    */
