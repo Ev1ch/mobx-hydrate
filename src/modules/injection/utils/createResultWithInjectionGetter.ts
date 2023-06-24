@@ -1,6 +1,6 @@
 import type { ObjectWithProps } from '@/utils';
 
-import type { GetResultWithInjection } from './getResultWithInjection';
+import type { GetResultWithInjection } from '../domain';
 
 export type CreateResultWithInjectionGetter = (key: string) => GetResultWithInjection;
 
