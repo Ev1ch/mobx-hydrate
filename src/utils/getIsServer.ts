@@ -2,6 +2,6 @@ import getIsClient from './getIsClient';
 
 export type GetIsServer = () => boolean;
 
-const getIsServer = () => !getIsClient();
+const getIsServer: GetIsServer = () => !getIsClient();
 
 export default getIsServer;
