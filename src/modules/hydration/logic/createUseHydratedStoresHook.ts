@@ -7,7 +7,7 @@ import { getInjectionFromResult } from '@/modules/injection/logic';
 import { getDeserializedStores } from '@/modules/serialization/logic';
 
 import type { HydratableStores, UseHydratedStores } from '../domain';
-import { useHydration } from '../hooks';
+import useHydration from './useHydration';
 
 enableStaticRendering(getIsServer());
 
