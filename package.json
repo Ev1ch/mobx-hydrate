@@ -15,6 +15,8 @@
     "url": "https://github.com/github.com/Ev1ch/mobx-hydrate/issues"
   },
   "homepage": "https://github.com/github.com/Ev1ch/mobx-hydrate",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
     "prepare": "husky install",
     "build": "tsc && tsc-alias",
