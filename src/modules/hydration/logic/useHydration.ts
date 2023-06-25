@@ -1,7 +1,7 @@
 import { useRef, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
-import type { DeserializedStores, SerializedStores } from '@/modules/serialization/domain';
+import type { DeserializedStores, SerializedStores } from '@/modules/serialization';
 
 import type { HydratableStores } from '../domain';
 import { ConstructedStores } from '@/domain';

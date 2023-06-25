@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 
 import type { Stores } from '@/domain';
-import type { SerializedStores } from '@/modules/serialization/domain';
-import type { ServerPropsGetterResult } from '@/modules/server-props/domain';
+import type { SerializedStores } from '@/modules/serialization';
+import type { ServerPropsGetterResult } from '@/modules/server-props';
 
 export type GetResultWithInjection = <TStores extends Stores>(
   result: ServerPropsGetterResult,

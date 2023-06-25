@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { enableStaticRendering } from 'mobx-react';
 
-import type { SerializedStores } from '@/modules/serialization/domain';
+import type { SerializedStores } from '@/modules/serialization';
 import { createStores, getIsServer } from '@/utils';
-import { getInjectionFromResult } from '@/modules/injection/logic';
-import { getDeserializedStores } from '@/modules/serialization/logic';
+import { getInjectionFromResult } from '@/modules/injection';
+import { getDeserializedStores } from '@/modules/serialization';
 
 import type { HydratableStores, UseHydratedStores } from '../domain';
 import useHydration from './useHydration';

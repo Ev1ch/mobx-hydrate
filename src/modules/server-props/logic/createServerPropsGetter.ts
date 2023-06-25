@@ -9,8 +9,8 @@ import type { ParsedUrlQuery } from 'querystring';
 
 import type { Stores } from '@/domain';
 import { type ObjectWithStringKeys, createStores } from '@/utils';
-import { getResultWithInjection } from '@/modules/injection/logic';
-import { getSerializedStores } from '@/modules/serialization/logic';
+import { getResultWithInjection } from '@/modules/injection';
+import { getSerializedStores } from '@/modules/serialization';
 
 import type { StoredServerPropsGetter, StoredServerPropsGetterCallback } from '../domain';
 

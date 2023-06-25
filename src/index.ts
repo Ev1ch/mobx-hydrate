@@ -1,7 +1,7 @@
-import type { HydratableStores, UseHydratedStores } from '@/modules/hydration/domain';
-import type { StoredServerPropsGetter } from '@/modules/server-props/domain';
-import { createStoredServerPropsGetter } from '@/modules/server-props/utils';
-import { createUseHydratedStoresHook } from '@/modules/hydration/utils';
+import type { HydratableStores, UseHydratedStores } from '@/modules/hydration';
+import type { StoredServerPropsGetter } from '@/modules/server-props';
+import { createStoredServerPropsGetter } from '@/modules/server-props/logic';
+import { createUseHydratedStoresHook } from '@/modules/hydration/logic';
 
 export interface Options<TStores extends HydratableStores> {
   stores: TStores;
@@ -19,5 +19,5 @@ const createWithStores: CreateWithStores = (options) => ({
   useHydratedStores: createUseHydratedStoresHook(options.stores),
 });
 
-export type { Hydratable } from '@/modules/hydration/domain';
+export type { Hydratable } from '@/modules/hydration';
 export default createWithStores;
