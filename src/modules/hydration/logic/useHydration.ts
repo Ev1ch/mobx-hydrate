@@ -13,6 +13,11 @@ export type UseHydration = <TStores extends HydratableStores>(
 
 const useHydration: UseHydration = (stores, deserializedStores) => {
   const { events } = useRouter();
+  /**
+   * The initial value is `true` to make
+   * server-side page match the hydrated one
+   * on the client.
+   */
   const shouldHydrate = useRef(true);
 
   useEffect(() => {
@@ -27,6 +32,12 @@ const useHydration: UseHydration = (stores, deserializedStores) => {
     };
   }, [events]);
 
+  /**
+   * `useMemo` is used here to prevent unnecessary re-render.
+   * With `useEffect` React will firstly render components with
+   * initial state and than re-render them with hydrated state.
+   * With `useMemo` we can prevent this behavior.
+   */
   useMemo(() => {
     if (shouldHydrate.current && deserializedStores) {
       Object.entries(stores).forEach(([key, store]) => {
