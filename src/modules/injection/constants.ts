@@ -1,1 +1,1 @@
-export const HYDRATION_KEY = '__STORES__';
+export const HYDRATION_KEY = '__MOBX_HYDRATED_STORES__';
