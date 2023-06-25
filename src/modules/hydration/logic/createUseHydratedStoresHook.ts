@@ -3,8 +3,8 @@ import { enableStaticRendering } from 'mobx-react';
 
 import type { SerializedStores } from '@/modules/serialization/domain';
 import { createStores, getIsServer } from '@/utils';
-import { getInjectionFromResult } from '@/modules/injection/utils';
-import { getDeserializedStores } from '@/modules/serialization/utils';
+import { getInjectionFromResult } from '@/modules/injection/logic';
+import { getDeserializedStores } from '@/modules/serialization/logic';
 
 import type { HydratableStores, UseHydratedStores } from '../domain';
 import { useHydration } from '../hooks';
