@@ -8,7 +8,7 @@ const createResultWithInjectionGetter: CreateResultWithInjectionGetter =
   (key) => (result, stores) => ({
     ...result,
     props: {
-      ...(Object.keys(result).includes('props') ? (result as ObjectWithProps).props : {}),
+      ...(Object.keys(result).includes('props') && (result as ObjectWithProps).props),
       [key]: stores,
     },
   });
