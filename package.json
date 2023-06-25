@@ -4,13 +4,17 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ev1ch/mobx-hydrate.git"
+    "url": "git://github.com/Ev1ch/mobx-hydrate.git"
   },
   "author": {
     "name": "Vlad Zusko",
     "email": "vladzvu11@gmail.com"
   },
   "readme": "README.md",
+  "bugs": {
+    "url": "https://github.com/github.com/Ev1ch/mobx-hydrate/issues"
+  },
+  "homepage": "https://github.com/github.com/Ev1ch/mobx-hydrate",
   "scripts": {
     "prepare": "husky install",
     "build": "tsc && tsc-alias",
