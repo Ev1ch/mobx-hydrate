@@ -14,10 +14,9 @@ const getDeserializedStores: GetDeserializedStores = <TStores extends Stores>(
   constructedStores: SerializedStores<TStores>,
 ) =>
   Object.entries(constructedStores).reduce((accumulator, [key, store]) => {
-    accumulator[key as keyof SerializedStores<TStores>] = deserialize(
-      stores[store.class]!,
-      store.data,
-    ) as DeserializedStores<TStores, SerializedStores<TStores>>[keyof SerializedStores<TStores>];
+    accumulator[key as keyof SerializedStores<TStores>] = deserialize<
+      DeserializedStores<TStores, SerializedStores<TStores>>[typeof key]
+    >(stores[store.class]!, store.data);
     return accumulator;
   }, {} as DeserializedStores<TStores, SerializedStores<TStores>>);
 
