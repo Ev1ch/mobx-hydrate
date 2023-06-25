@@ -20,6 +20,13 @@
   "homepage": "https://github.com/github.com/Ev1ch/mobx-hydrate",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "keywords": [
+    "mobx",
+    "hydrate",
+    "ssr",
+    "ssg",
+    "nextjs"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "tsc && tsc-alias",
