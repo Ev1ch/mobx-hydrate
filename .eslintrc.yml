@@ -14,4 +14,13 @@ parserOptions:
 plugins:
   - '@typescript-eslint'
   - react
-rules: { import/prefer-default-export: 'off', max-len: [100, 'error'], operator-linebreak: 'off' }
+rules:
+  {
+    import/prefer-default-export: 'off',
+    max-len: ['error', { code: 100, tabWidth: 2, ignoreUrls: true }],
+    operator-linebreak: 'off',
+    import/extensions: 'off',
+    implicit-arrow-linebreak: 'off',
+    '@typescript-eslint/indent': 'off',
+    no-restricted-exports: 'off',
+  }
