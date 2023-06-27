@@ -30,10 +30,10 @@
   "scripts": {
     "prepare": "husky install",
     "build": "tsc && tsc-alias",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --ignore-path .gitignore",
-    "format": "prettier --check . --ignore-path .gitignore",
-    "format:fix": "prettier --write . --ignore-path .gitignore",
+    "lint": "eslint ./src --ext .ts,.tsx --ignore-path .gitignore",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "format": "prettier --check ./src --ignore-path .gitignore",
+    "format:fix": "prettier --write ./src --ignore-path .gitignore",
     "test": "jest",
     "test:watch": "jest --watch"
   },
