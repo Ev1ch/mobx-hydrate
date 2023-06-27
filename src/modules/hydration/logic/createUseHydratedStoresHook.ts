@@ -18,7 +18,7 @@ export type CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
 const createUseHydratedStoresHook: CreateUseHydratedStoresHook =
   <TStores extends HydratableStores>(stores: TStores) =>
   (props) => {
-    const rootStores = useMemo(() => createStores(stores), [stores]);
+    const rootStores = useMemo(() => createStores(stores), []);
     const injection = getInjectionFromResult<SerializedStores<TStores>>(props);
     const deserializedStores = injection ? getDeserializedStores(stores, injection) : null;
 
