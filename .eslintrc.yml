@@ -23,4 +23,5 @@ rules:
     implicit-arrow-linebreak: 'off',
     '@typescript-eslint/indent': 'off',
     no-restricted-exports: 'off',
+    object-curly-newline: 'off',
   }
