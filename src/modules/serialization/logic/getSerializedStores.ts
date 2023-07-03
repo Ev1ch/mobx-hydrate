@@ -1,22 +1,7 @@
-import { serialize } from 'serializr';
+import type { GetSerializedStores } from '../domain';
+import { SERIALIZE } from '../constants';
+import createSerializedStoresGetter from './createSerializedStoresGetter';
 
-import type { ConstructedStores, Stores } from '@/domain';
-
-import type { SerializedStores } from '../domain';
-
-export type GetSerializedStores = <TStores extends Stores>(
-  stores: ConstructedStores<TStores>,
-) => SerializedStores<TStores>;
-
-const getSerializedStores: GetSerializedStores = <TStores extends Stores>(
-  stores: ConstructedStores<TStores>,
-) =>
-  Object.entries(stores).reduce((accumulator, [key, store]) => {
-    accumulator[key as keyof TStores] = {
-      class: key,
-      data: serialize(store),
-    };
-    return accumulator;
-  }, {} as SerializedStores<TStores>);
+const getSerializedStores: GetSerializedStores = createSerializedStoresGetter(SERIALIZE);
 
 export default getSerializedStores;
