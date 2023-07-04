@@ -1,4 +1,4 @@
-import type { Stores } from '@/domain';
+import type { ConstructedStores, Stores } from '@/domain';
 
 import type { Serialize, SerializedStores, GetSerializedStores } from '../domain';
 
@@ -6,9 +6,9 @@ export type CreateSerializedStoresGetter = (serialize: Serialize) => GetSerializ
 
 const createSerializedStoresGetter: CreateSerializedStoresGetter =
   (serialize) =>
-  <TStores extends Stores>(stores: TStores) =>
+  <TStores extends Stores>(stores: ConstructedStores<TStores>) =>
     Object.entries(stores).reduce((accumulator, [key, store]) => {
-      accumulator[key as keyof TStores] = serialize(store);
+      accumulator[key as keyof ConstructedStores<TStores>] = serialize(store);
       return accumulator;
     }, {} as SerializedStores<TStores>);
 
