@@ -1,26 +1,19 @@
 import type { ConstructedStore, ConstructedStores, Store, Stores } from '@/domain';
 
 /**
- * Allow `string | symbol | number`
- * as a generic type parameter
- * to prevent errors when using `keyof`
+ * Type is unknown because it is not possible
+ * to know what the custom serialized store will look like.
  */
-export type SerializedStore<TClass extends string | symbol | number> = {
-  class: TClass;
-  data: string;
-};
+export type SerializedStore = unknown;
 
 export type SerializedStores<TStores extends Stores> = {
-  [key in keyof TStores]: SerializedStore<key>;
+  [key in keyof TStores]: SerializedStore;
 };
 
 export type DeserializedStore<TStore extends Store> = InstanceType<TStore>;
 
-export type DeserializedStores<
-  TStores extends Stores,
-  TSerializedStores extends SerializedStores<Stores>,
-> = {
-  [key in keyof TSerializedStores]: DeserializedStore<TStores[TSerializedStores[key]['class']]>;
+export type DeserializedStores<TStores extends Stores> = {
+  [key in keyof TStores]: DeserializedStore<TStores[key]>;
 };
 
 export type Serialize = <TStore extends Store, TSerializedStore>(
@@ -35,7 +28,7 @@ export type Deserialize = <TStore extends Store, TSerializedStore>(
 export type GetDeserializedStores = <TStores extends Stores>(
   stores: TStores,
   serializedStores: SerializedStores<TStores>,
-) => DeserializedStores<TStores, SerializedStores<TStores>>;
+) => DeserializedStores<TStores>;
 
 export type GetSerializedStores = <TStores extends Stores>(
   stores: ConstructedStores<TStores>,
