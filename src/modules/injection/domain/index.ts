@@ -10,3 +10,7 @@ export type GetResultWithInjection = <TStores extends Stores>(
 ) => ServerPropsGetterResult;
 
 export type GetInjectionFromResult = <TInjection>(result: AppProps) => TInjection | null;
+
+export interface InjectionOptions {
+  key: string;
+}
