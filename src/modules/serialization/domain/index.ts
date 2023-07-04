@@ -23,13 +23,13 @@ export type DeserializedStores<
   [key in keyof TSerializedStores]: DeserializedStore<TStores[TSerializedStores[key]['class']]>;
 };
 
-export type Serialize = <TStore extends Store>(
+export type Serialize = <TStore extends Store, TSerializedStore>(
   store: ConstructedStore<TStore>,
-) => SerializedStore<string>;
+) => TSerializedStore;
 
-export type Deserialize = <TStore extends Store>(
+export type Deserialize = <TStore extends Store, TSerializedStore>(
   store: TStore,
-  serializedStoreData: SerializedStore<string>['data'],
+  serializedStore: TSerializedStore,
 ) => DeserializedStore<TStore>;
 
 export type GetDeserializedStores = <TStores extends Stores>(
@@ -40,3 +40,8 @@ export type GetDeserializedStores = <TStores extends Stores>(
 export type GetSerializedStores = <TStores extends Stores>(
   stores: ConstructedStores<TStores>,
 ) => SerializedStores<TStores>;
+
+export interface SerializationOptions {
+  serialize: Serialize;
+  deserialize: Deserialize;
+}
