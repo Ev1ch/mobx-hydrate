@@ -14,6 +14,9 @@ import { createResultWithInjectionGetter } from '@/modules/injection';
 
 import type { CreateStoredServerPropsGetter, StoredServerPropsGetterCallback } from '../domain';
 
+/**
+ * Use explicit type definitions for casting purposes.
+ */
 const createStoredServerPropsGetter: CreateStoredServerPropsGetter = <TStores extends Stores>(
   stores: TStores,
   options: ProvidedOptions,

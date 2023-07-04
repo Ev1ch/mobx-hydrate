@@ -4,6 +4,9 @@ import type { CreateInjectionFromResultGetter } from '../domain';
 
 const createInjectionFromResultGetter: CreateInjectionFromResultGetter =
   (key: string) =>
+  /**
+   * Use explicit type definitions for casting purposes.
+   */
   <TInjection>(result: AppProps) => {
     if (!Object.keys(result.pageProps).includes(key)) {
       return null;

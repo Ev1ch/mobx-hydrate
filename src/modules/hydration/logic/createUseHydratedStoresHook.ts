@@ -11,6 +11,9 @@ import useHydration from './useHydration';
 
 enableStaticRendering(getIsServer());
 
+/**
+ * Use explicit type definitions for casting purposes.
+ */
 const createUseHydratedStoresHook: CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
   stores: TStores,
   options: ProvidedOptions,

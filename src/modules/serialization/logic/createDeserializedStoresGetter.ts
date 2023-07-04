@@ -8,6 +8,9 @@ import type {
 
 const createDeserializedStoresGetter: CreateDeserializedStoresGetter =
   (deserialize) =>
+  /**
+   * Use explicit type definitions for casting purposes.
+   */
   <TStores extends Stores>(stores: TStores, serializedStores: SerializedStores<TStores>) =>
     Object.entries(serializedStores).reduce((accumulator, [key, serializedStore]) => {
       accumulator[key as keyof SerializedStores<TStores>] = deserialize(
