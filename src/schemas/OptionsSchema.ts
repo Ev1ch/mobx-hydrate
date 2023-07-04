@@ -1,11 +1,16 @@
 import Joi from 'joi';
 
-const StoresSchema = Joi.object().pattern(Joi.string(), Joi.function().class());
+import { InjectionOptionsSchema } from '@/modules/injection/schemas';
+import { SerializationOptionsSchema } from '@/modules/serialization/schemas';
 
-const OptionsSchema = Joi.object()
+import type { Options } from '../domain';
+
+const OptionsSchema = Joi.object<Options>()
   .keys({
-    stores: StoresSchema.min(1).required(),
+    injection: InjectionOptionsSchema.optional(),
+    serialization: SerializationOptionsSchema.optional(),
   })
+  .min(1)
   .required();
 
 export default OptionsSchema;
