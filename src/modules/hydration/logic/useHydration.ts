@@ -1,10 +1,10 @@
 import { useRef, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
+import type { ConstructedStores } from '@/domain';
 import type { DeserializedStores } from '@/modules/serialization';
 
 import type { HydratableStores } from '../domain';
-import { ConstructedStores } from '@/domain';
 
 export type UseHydration = <TStores extends HydratableStores>(
   stores: ConstructedStores<TStores>,
