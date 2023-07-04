@@ -1,31 +1,31 @@
-import type { HydratableStores, UseHydratedStores } from '@/modules/hydration';
-import type { StoredServerPropsGetter } from '@/modules/server-props';
+import type { CreateWithStores } from '@/domain';
+import { StoresSchema, OptionsSchema, validate } from '@/schemas';
 import { throwMultipleOrOne } from '@/utils';
-import { validate, OptionsSchema } from '@/schemas';
-import { createStoredServerPropsGetter } from '@/modules/server-props';
+import { DEFAULT_OPTIONS } from '@/constants';
 import { createUseHydratedStoresHook } from '@/modules/hydration';
+import { createStoredServerPropsGetter } from '@/modules/server-props';
 
-export interface Options<TStores extends HydratableStores> {
-  stores: TStores;
-}
+import createProvidedOptionsGetter from './createProvidedOptionsGetter';
 
-export type CreateWithStores = <TStores extends HydratableStores>(
-  options: Options<TStores>,
-) => {
-  withStores: StoredServerPropsGetter<TStores>;
-  useHydratedStores: UseHydratedStores<TStores>;
-};
+const createWithStores: CreateWithStores = (stores, options) => {
+  const getProvidedOptions = createProvidedOptionsGetter(DEFAULT_OPTIONS);
+  const { errors: storesErrors } = validate(StoresSchema, stores);
 
-const createWithStores: CreateWithStores = (options) => {
-  const { errors } = validate(OptionsSchema, options);
-
-  if (errors) {
-    throwMultipleOrOne(errors);
+  if (storesErrors) {
+    throwMultipleOrOne(storesErrors);
   }
 
+  const { errors: optionsErrors } = validate(OptionsSchema, options);
+
+  if (optionsErrors) {
+    throwMultipleOrOne(optionsErrors);
+  }
+
+  const providedOptions = getProvidedOptions(options);
+
   return {
-    withStores: createStoredServerPropsGetter(options.stores),
-    useHydratedStores: createUseHydratedStoresHook(options.stores),
+    withStores: createStoredServerPropsGetter(stores, providedOptions),
+    useHydratedStores: createUseHydratedStoresHook(stores, providedOptions),
   };
 };
 

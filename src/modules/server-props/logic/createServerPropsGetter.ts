@@ -7,20 +7,25 @@ import type {
 } from 'next/types';
 import type { ParsedUrlQuery } from 'querystring';
 
-import type { Stores } from '@/domain';
+import type { ProvidedOptions, Stores } from '@/domain';
 import { type ObjectWithStringKeys, createStores } from '@/utils';
-import { getResultWithInjection } from '@/modules/injection';
-import { getSerializedStores } from '@/modules/serialization';
+import { createSerializedStoresGetter } from '@/modules/serialization';
+import { createResultWithInjectionGetter } from '@/modules/injection';
 
 import type { StoredServerPropsGetter, StoredServerPropsGetterCallback } from '../domain';
 
 export type CreateStoredServerPropsGetter = <TStores extends Stores>(
   stores: TStores,
+  options: ProvidedOptions,
 ) => StoredServerPropsGetter<TStores>;
 
 const createStoredServerPropsGetter: CreateStoredServerPropsGetter = <TStores extends Stores>(
   stores: TStores,
+  options: ProvidedOptions,
 ) => {
+  const getSerializedStores = createSerializedStoresGetter(options.serialization.serialize);
+  const getResultWithInjection = createResultWithInjectionGetter(options.injection.key);
+
   const getServerSideProps =
     <
       Props extends ObjectWithStringKeys = ObjectWithStringKeys,

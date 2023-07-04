@@ -1,23 +1,29 @@
 import { useMemo } from 'react';
 import { enableStaticRendering } from 'mobx-react';
 
-import type { SerializedStores } from '@/modules/serialization';
+import { createDeserializedStoresGetter, type SerializedStores } from '@/modules/serialization';
 import { createStores, getIsServer } from '@/utils';
-import { getInjectionFromResult } from '@/modules/injection';
-import { getDeserializedStores } from '@/modules/serialization';
+import { createInjectionFromResultGetter } from '@/modules/injection';
 
 import type { HydratableStores, UseHydratedStores } from '../domain';
 import useHydration from './useHydration';
+import { ProvidedOptions } from '@/domain';
 
 enableStaticRendering(getIsServer());
 
 export type CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
   stores: TStores,
+  options: ProvidedOptions,
 ) => UseHydratedStores<TStores>;
 
-const createUseHydratedStoresHook: CreateUseHydratedStoresHook =
-  <TStores extends HydratableStores>(stores: TStores) =>
-  (props) => {
+const createUseHydratedStoresHook: CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
+  stores: TStores,
+  options: ProvidedOptions,
+) => {
+  const getInjectionFromResult = createInjectionFromResultGetter(options.injection.key);
+  const getDeserializedStores = createDeserializedStoresGetter(options.serialization.deserialize);
+
+  return (props) => {
     const rootStores = useMemo(() => createStores(stores), []);
     const injection = getInjectionFromResult<SerializedStores<TStores>>(props);
     const deserializedStores = injection ? getDeserializedStores(stores, injection) : null;
@@ -26,5 +32,6 @@ const createUseHydratedStoresHook: CreateUseHydratedStoresHook =
 
     return rootStores;
   };
+};
 
 export default createUseHydratedStoresHook;
