@@ -14,8 +14,8 @@ export type ObjectWithProps<TProps = ObjectWithStringKeys> = {
   props: TProps;
 };
 
-export { type CreateStores, default as createStores } from './createStores';
-export { type GetIsClient, default as getIsClient } from './getIsClient';
-export { type GetIsServer, default as getIsServer } from './getIsServer';
+export { default as createStores } from './createStores';
+export { default as getIsClient } from './getIsClient';
+export { default as getIsServer } from './getIsServer';
 export { default as MultipleError } from './MultipleError';
-export { type ThrowMultipleOrOne, default as throwMultipleOrOne } from './throwMultipleOrOne';
+export { default as throwMultipleOrOne } from './throwMultipleOrOne';

@@ -1,11 +1,6 @@
 import Joi from 'joi';
 
-export type Validate = <TObject>(
-  schema: Joi.Schema<TObject>,
-  data: unknown,
-) => { errors?: Joi.ValidationError[] };
-
-const validate: Validate = (schema, data) => {
+const validate = <TObject>(schema: Joi.Schema<TObject>, data: unknown) => {
   const { error } = schema.validate(data, { abortEarly: false });
 
   if (error) {

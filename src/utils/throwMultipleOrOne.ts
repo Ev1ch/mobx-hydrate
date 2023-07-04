@@ -1,8 +1,6 @@
 import MultipleError from './MultipleError';
 
-export type ThrowMultipleOrOne = (errors: Error[]) => void;
-
-const throwMultipleOrOne: ThrowMultipleOrOne = (errors: Error[]) => {
+const throwMultipleOrOne = (errors: Error[]) => {
   if (errors.length === 1) {
     /**
      * Disable ESLint rule because this literal is already an error.
