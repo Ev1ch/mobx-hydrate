@@ -1,8 +1,6 @@
 import type { AppProps } from 'next/app';
 
-import type { GetInjectionFromResult } from '../domain';
-
-export type CreateInjectionFromResultGetter = (key: string) => GetInjectionFromResult;
+import type { CreateInjectionFromResultGetter } from '../domain';
 
 const createInjectionFromResultGetter: CreateInjectionFromResultGetter =
   (key: string) =>

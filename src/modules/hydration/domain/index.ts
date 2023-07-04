@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 
-import type { ConstructedStores, Stores } from '@/domain';
+import type { ConstructedStores, ProvidedOptions, Stores } from '@/domain';
 import type { Constructor } from '@/utils';
 
 export type HydratableStores = Record<
@@ -23,3 +23,8 @@ export interface Hydratable<TClass extends InstanceType<Constructor>> {
 export type UseHydratedStores<TStores extends Stores> = (
   props: AppProps,
 ) => ConstructedStores<TStores>;
+
+export type CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
+  stores: TStores,
+  options: ProvidedOptions,
+) => UseHydratedStores<TStores>;

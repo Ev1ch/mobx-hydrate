@@ -1,8 +1,6 @@
 import type { ConstructedStores, Stores } from '@/domain';
 
-import type { Serialize, SerializedStores, GetSerializedStores } from '../domain';
-
-export type CreateSerializedStoresGetter = (serialize: Serialize) => GetSerializedStores;
+import type { SerializedStores, CreateSerializedStoresGetter } from '../domain';
 
 const createSerializedStoresGetter: CreateSerializedStoresGetter =
   (serialize) =>

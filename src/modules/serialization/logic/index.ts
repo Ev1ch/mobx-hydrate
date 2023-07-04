@@ -1,8 +1,2 @@
-export {
-  type CreateDeserializedStoresGetter,
-  default as createDeserializedStoresGetter,
-} from './createDeserializedStoresGetter';
-export {
-  type CreateSerializedStoresGetter,
-  default as createSerializedStoresGetter,
-} from './createSerializedStoresGetter';
+export { default as createDeserializedStoresGetter } from './createDeserializedStoresGetter';
+export { default as createSerializedStoresGetter } from './createSerializedStoresGetter';

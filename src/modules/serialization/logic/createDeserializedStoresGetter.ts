@@ -1,13 +1,10 @@
 import type { Stores } from '@/domain';
 
 import type {
-  Deserialize,
+  CreateDeserializedStoresGetter,
   DeserializedStores,
-  GetDeserializedStores,
   SerializedStores,
 } from '../domain';
-
-export type CreateDeserializedStoresGetter = (deserialize: Deserialize) => GetDeserializedStores;
 
 const createDeserializedStoresGetter: CreateDeserializedStoresGetter =
   (deserialize) =>

@@ -1,20 +1,15 @@
 import { useMemo } from 'react';
 import { enableStaticRendering } from 'mobx-react';
 
+import type { ProvidedOptions } from '@/domain';
 import { createDeserializedStoresGetter, type SerializedStores } from '@/modules/serialization';
 import { createStores, getIsServer } from '@/utils';
 import { createInjectionFromResultGetter } from '@/modules/injection';
 
-import type { HydratableStores, UseHydratedStores } from '../domain';
+import type { CreateUseHydratedStoresHook, HydratableStores } from '../domain';
 import useHydration from './useHydration';
-import { ProvidedOptions } from '@/domain';
 
 enableStaticRendering(getIsServer());
-
-export type CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
-  stores: TStores,
-  options: ProvidedOptions,
-) => UseHydratedStores<TStores>;
 
 const createUseHydratedStoresHook: CreateUseHydratedStoresHook = <TStores extends HydratableStores>(
   stores: TStores,

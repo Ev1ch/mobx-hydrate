@@ -7,7 +7,7 @@ import type {
 } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
 
-import type { Stores, ConstructedStores } from '@/domain';
+import type { Stores, ConstructedStores, ProvidedOptions } from '@/domain';
 import type { FunctionWithAwaited, ObjectWithStringKeys } from '@/utils';
 
 export type StoredServerPropsGetterCallback<
@@ -36,3 +36,8 @@ export type ServerPropsGetter<
 
 export type ServerPropsGetterResult<TProps extends ObjectWithStringKeys = ObjectWithStringKeys> =
   Awaited<ReturnType<ServerPropsGetter<TProps>>>;
+
+export type CreateStoredServerPropsGetter = <TStores extends Stores>(
+  stores: TStores,
+  options: ProvidedOptions,
+) => StoredServerPropsGetter<TStores>;

@@ -12,12 +12,7 @@ import { type ObjectWithStringKeys, createStores } from '@/utils';
 import { createSerializedStoresGetter } from '@/modules/serialization';
 import { createResultWithInjectionGetter } from '@/modules/injection';
 
-import type { StoredServerPropsGetter, StoredServerPropsGetterCallback } from '../domain';
-
-export type CreateStoredServerPropsGetter = <TStores extends Stores>(
-  stores: TStores,
-  options: ProvidedOptions,
-) => StoredServerPropsGetter<TStores>;
+import type { CreateStoredServerPropsGetter, StoredServerPropsGetterCallback } from '../domain';
 
 const createStoredServerPropsGetter: CreateStoredServerPropsGetter = <TStores extends Stores>(
   stores: TStores,

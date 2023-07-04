@@ -1,4 +1,1 @@
-export {
-  type CreateStoredServerPropsGetter,
-  default as createStoredServerPropsGetter,
-} from './createServerPropsGetter';
+export { default as createStoredServerPropsGetter } from './createServerPropsGetter';

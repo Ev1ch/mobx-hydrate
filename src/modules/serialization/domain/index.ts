@@ -38,3 +38,7 @@ export interface SerializationOptions {
   serialize: Serialize;
   deserialize: Deserialize;
 }
+
+export type CreateSerializedStoresGetter = (serialize: Serialize) => GetSerializedStores;
+
+export type CreateDeserializedStoresGetter = (deserialize: Deserialize) => GetDeserializedStores;
